@@ -1,8 +1,14 @@
 import React from 'react'
+import Menu from '../Menu/Menu'
 
 function Home() {
   return (
-    <div>Home</div>
+    <div><Menu/>
+    
+
+    
+    </div>
+
   )
 }
 
