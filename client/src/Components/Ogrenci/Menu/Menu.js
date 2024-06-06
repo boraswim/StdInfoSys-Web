@@ -16,7 +16,9 @@ function Menu() {
   <li style={{display: 'inline-block'}} class="nav-item">
     <Link to="not" class="nav-link active mt-2" href="#">Öğrenci Not Bilgileri</Link>
   </li>
-
+  <li style={{display: 'inline-block'}} class="nav-item">
+    <Link to="profil" class="nav-link active mt-2" href="#">Öğrenci Profili</Link>
+  </li>
 
 
 

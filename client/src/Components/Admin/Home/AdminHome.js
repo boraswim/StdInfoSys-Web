@@ -1,7 +1,7 @@
 import React from 'react'
-import Menu from '../Menu/Menu'
+import Menu from '../Menu/AdminMenu'
 
-function Home() {
+function AdminHome() {
   return (
     <div><Menu/>
     
@@ -12,4 +12,4 @@ function Home() {
   )
 }
 
-export default Home
+export default AdminHome;

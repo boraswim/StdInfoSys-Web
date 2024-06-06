@@ -1,16 +1,25 @@
 import React from 'react'
-import Login from './Components/Login/Login'
+import Login from './Components/Ogrenci/Login/Login'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import Register from './Components/Register/Register'
-import Home from './Components/Home/Home'
+import Register from './Components/Ogrenci/Register/Register'
+import Home from './Components/Ogrenci/Home/Home'
 import Header from './Components/Header/Header'
 import Footer from './Components/Footer/Footer'
-import DersAlma from './Components/DersAlma/DersAlma'
-import BolumDers from './Components/BolumDers/BolumDers'
-import Not from './Components/Not/Not'
+import DersAlma from './Components/Ogrenci/DersAlma/DersAlma'
+import BolumDers from './Components/Ogrenci/BolumDers/BolumDers'
+import Not from './Components/Ogrenci/Not/Not'
+import Profil from './Components/Ogrenci/Profil/Profil'
+import OgretmenLogin from './Components/Ogretmen/Login/OgretmenLogin'
+import OgretmenHome from './Components/Ogretmen/Home/OgretmenHome'
+import AdminLogin from './Components/Admin/Login/AdminLogin'
+import AdminHome from './Components/Admin/Home/AdminHome'
+
+
 function App() {
   return (
     <BrowserRouter>
+
+
     <div>
 
     <Header/>
@@ -20,16 +29,21 @@ function App() {
 
 
       <Routes>
+        <Route path='/adminLogin' element={<AdminLogin />}></Route>
+        <Route path='/adminHome' element={<AdminHome />}></Route>
+        <Route path='/ogretmenLogin' element={<OgretmenLogin />}></Route>
+        <Route path='/ogretmenHome' element={<OgretmenHome />}></Route>
         <Route path='/' element={<Login />}></Route>
         <Route path='/register' element={<Register />}></Route>
         <Route path='/home' element={<Home />}>
             <Route path='dersalma' element={<DersAlma/>}></Route>
             <Route path='bolumders' element={<BolumDers/>}></Route>
             <Route path='not' element={<Not/>}></Route>
+            <Route path='profil' element={<Profil/>}></Route>
         </Route>
         
       </Routes>
-
+  
 
       <Footer/>
       </div>
@@ -37,5 +51,4 @@ function App() {
       
   )
 }
-
-export default App
+export default App;

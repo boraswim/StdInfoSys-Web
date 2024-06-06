@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import Validation from './LoginValidation'
 import axios from 'axios'
 
-function Login() {
+function AdminLogin() {
     const [values, setValues] = useState({
         email: '',
         password: ''
@@ -33,11 +33,11 @@ function Login() {
 
         if(health){
             console.log("hata yok istek atıyor")
-            axios.post('http://localhost:3000/login', values)
+            axios.post('http://localhost:3000/adminLogin', values)
             .then(res => {
                 console.log(res)
                 if(res.data === "Success") {
-                    navigate('/home')
+                    navigate('/adminHome')
                 }
                 else{
                     alert("No record exists")
@@ -50,7 +50,7 @@ function Login() {
   return (
     <div className='d-flex justify-content-center align-items-center bg-primary-subtle vh-100'>
         <div className='bg-white p-3 rounded w-25'> 
-        <h2>Login</h2>
+        <h2>Admin Login</h2>
             <form action='' onSubmit={handleSubmit}>
                 <div className='mb-3'>
                     <label htmlFor='email'><strong>Email</strong></label>
@@ -73,4 +73,4 @@ function Login() {
   )
 }
 
-export default Login
+export default AdminLogin

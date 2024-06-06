@@ -47,6 +47,44 @@ app.post('/login', (req, res) => {
     })
 })
 
+
+app.post('/ogretmenLogin', (req, res) => {
+    const sql = "SELECT * FROM ogretmen WHERE `email` = ? AND `password` = ?";
+    db.query(sql, [req.body.email, req.body.password], (err, data) => { //callback
+        console.log("err,data", err,data)
+        if(err) {
+            return res.json("Error");
+        }
+        console.log(data);
+        if(data.length > 0){
+            return res.json("Success");
+        }
+        else{
+            return res.json("Fail");
+        }
+    })
+})
+
+
+app.post('/adminLogin', (req, res) => {
+    const sql = "SELECT * FROM admin WHERE `email` = ? AND `password` = ?";
+    db.query(sql, [req.body.email, req.body.password], (err, data) => { //callback
+        console.log("err,data", err,data)
+        if(err) {
+            return res.json("Error");
+        }
+        console.log(data);
+        if(data.length > 0){
+            return res.json("Success");
+        }
+        else{
+            return res.json("Fail");
+        }
+    })
+})
+
+
+
 app.listen("3000", () => {
     console.log("Server is successfully running on port 3000");
 });
