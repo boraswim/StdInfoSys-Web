@@ -119,6 +119,22 @@ app.get("/deleteclass/:id",(req,res)=>{
     });
 });
 
+app.post('/addclass', (req, res) => {
+    const sql = "INSERT INTO ders (`name`,`email`,`password`) VALUES (?)";
+    const values = [
+        req.body.name,
+        req.body.email,
+        req.body.password,
+    ]
+    db.query(sql, [values], (err, data) => {
+        if(err) {
+            return res.json("Error");
+        }
+        console.log(data);
+        return res.json(data);
+    })
+})
+
 app.get("/getteachers",(req, res)=>{
     let sql="SELECT * FROM ogretmen";
     let query=db.query(sql,(err,result)=>{
@@ -136,6 +152,22 @@ app.get("/deleteteacher/:id",(req,res)=>{
         res.send("Post deleted");
     });
 });
+
+app.post('/addteacher', (req, res) => {
+    const sql = "INSERT INTO ogretmen (`name`,`email`,`password`) VALUES (?)";
+    const values = [
+        req.body.name,
+        req.body.email,
+        req.body.password,
+    ]
+    db.query(sql, [values], (err, data) => {
+        if(err) {
+            return res.json("Error");
+        }
+        console.log(data);
+        return res.json(data);
+    })
+})
 
 
 
