@@ -15,6 +15,14 @@ function DersEdit()
     setData(res.data);
     }
 
+    function deleteClass()
+    {
+      const idInput = document.getElementById("deleteId").value;
+      console.log(idInput);
+      axios.get(`http://localhost:3000/deleteclass/${idInput}`);
+      window.location.reload();
+    }
+
 
   return (
       <div>
@@ -41,6 +49,8 @@ function DersEdit()
               }
             </tbody>
           </table>
+          <input placeholder="Enter ID to delete" name="id" id="deleteId"></input>
+          <button onClick={deleteClass}>DELETE</button>
       </div>
     );
 };

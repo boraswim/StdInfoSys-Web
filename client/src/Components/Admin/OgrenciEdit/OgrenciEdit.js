@@ -15,6 +15,14 @@ function OgrenciEdit()
     setData(res.data);
     }
 
+    function deleteStudent()
+    {
+      const idInput = document.getElementById("deleteId").value;
+      console.log(idInput);
+      axios.get(`http://localhost:3000/deletestudent/${idInput}`);
+      window.location.reload();
+    }
+
   return (
       <div>
           <h1>Student List</h1>
@@ -40,6 +48,8 @@ function OgrenciEdit()
               }
             </tbody>
           </table>
+          <input placeholder="Enter ID to delete" name="id" id="deleteId"></input>
+          <button onClick={deleteStudent}>DELETE</button>
       </div>
     );
 };

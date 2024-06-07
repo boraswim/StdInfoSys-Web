@@ -15,6 +15,14 @@ function OgretmenEdit()
     setData(res.data);
     }
 
+    function deleteTeacher()
+    {
+      const idInput = document.getElementById("deleteId").value;
+      console.log(idInput);
+      axios.get(`http://localhost:3000/deleteteacher/${idInput}`);
+      window.location.reload();
+    }
+
 
   return (
       <div>
@@ -41,6 +49,8 @@ function OgretmenEdit()
               }
             </tbody>
           </table>
+          <input placeholder="Enter ID to delete" name="id" id="deleteId"></input>
+          <button onClick={deleteTeacher}>DELETE</button>
       </div>
     );
 };

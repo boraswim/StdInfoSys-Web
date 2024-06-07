@@ -92,6 +92,15 @@ app.get("/getstudents",(req, res)=>{
     });
 });
 
+app.get("/deletestudent/:id",(req,res)=>{
+    let sql=`DELETE FROM login WHERE id=${req.params.id}`;
+    let query=db.query(sql,(err,result)=>{
+        if(err) throw err;
+        console.log(result);
+        res.send("Post deleted");
+    });
+});
+
 app.get("/getclasses",(req, res)=>{
     let sql="SELECT * FROM ders";
     let query=db.query(sql,(err,result)=>{
@@ -101,12 +110,30 @@ app.get("/getclasses",(req, res)=>{
     });
 });
 
+app.get("/deleteclass/:id",(req,res)=>{
+    let sql=`DELETE FROM ders WHERE id=${req.params.id}`;
+    let query=db.query(sql,(err,result)=>{
+        if(err) throw err;
+        console.log(result);
+        res.send("Post deleted");
+    });
+});
+
 app.get("/getteachers",(req, res)=>{
     let sql="SELECT * FROM ogretmen";
     let query=db.query(sql,(err,result)=>{
         if(err) throw err;
         console.log(result);
         res.send(result);
+    });
+});
+
+app.get("/deleteteacher/:id",(req,res)=>{
+    let sql=`DELETE FROM ogretmen WHERE id=${req.params.id}`;
+    let query=db.query(sql,(err,result)=>{
+        if(err) throw err;
+        console.log(result);
+        res.send("Post deleted");
     });
 });
 
