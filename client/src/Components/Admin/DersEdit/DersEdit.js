@@ -12,7 +12,7 @@ function DersEdit()
     async function getClasses()
     {
     var res = await axios.get('http://localhost:3000/getclasses');
-    setData(res.data.data);
+    setData(res.data);
     }
 
 

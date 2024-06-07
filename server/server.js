@@ -83,7 +83,7 @@ app.post('/adminLogin', (req, res) => {
     })
 })
 
-app.get("/getstudents",(res)=>{
+app.get("/getstudents",(req, res)=>{
     let sql="SELECT * FROM login";
     let query=db.query(sql,(err,result)=>{
         if(err) throw err;
@@ -92,7 +92,7 @@ app.get("/getstudents",(res)=>{
     });
 });
 
-app.get("/getclasses",(res)=>{
+app.get("/getclasses",(req, res)=>{
     let sql="SELECT * FROM ders";
     let query=db.query(sql,(err,result)=>{
         if(err) throw err;
@@ -101,7 +101,7 @@ app.get("/getclasses",(res)=>{
     });
 });
 
-app.get("/getteachers",(res)=>{
+app.get("/getteachers",(req, res)=>{
     let sql="SELECT * FROM ogretmen";
     let query=db.query(sql,(err,result)=>{
         if(err) throw err;
