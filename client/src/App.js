@@ -13,6 +13,9 @@ import OgretmenLogin from './Components/Ogretmen/Login/OgretmenLogin'
 import OgretmenHome from './Components/Ogretmen/Home/OgretmenHome'
 import AdminLogin from './Components/Admin/Login/AdminLogin'
 import AdminHome from './Components/Admin/Home/AdminHome'
+import OgretmenEdit from './Components/Admin/OgretmenEdit/OgretmenEdit'
+import OgrenciEdit from './Components/Admin/OgrenciEdit/OgrenciEdit'
+import DersEdit from './Components/Admin/DersEdit/DersEdit'
 
 
 function App() {
@@ -30,7 +33,11 @@ function App() {
 
       <Routes>
         <Route path='/adminLogin' element={<AdminLogin />}></Route>
-        <Route path='/adminHome' element={<AdminHome />}></Route>
+        <Route path='/adminHome' element={<AdminHome />}>
+            <Route path='ogretmenEdit' element={<OgretmenEdit/>}></Route> 
+            <Route path='ogrenciEdit' element={<OgrenciEdit/>}></Route>
+            <Route path='dersEdit' element={<DersEdit/>}></Route>
+        </Route>
         <Route path='/ogretmenLogin' element={<OgretmenLogin />}></Route>
         <Route path='/ogretmenHome' element={<OgretmenHome />}></Route>
         <Route path='/' element={<Login />}></Route>

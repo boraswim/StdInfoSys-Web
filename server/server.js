@@ -83,6 +83,33 @@ app.post('/adminLogin', (req, res) => {
     })
 })
 
+app.get("/getstudents",(res)=>{
+    let sql="SELECT * FROM login";
+    let query=db.query(sql,(err,result)=>{
+        if(err) throw err;
+        console.log(result);
+        res.send(result);
+    });
+});
+
+app.get("/getclasses",(res)=>{
+    let sql="SELECT * FROM ders";
+    let query=db.query(sql,(err,result)=>{
+        if(err) throw err;
+        console.log(result);
+        res.send(result);
+    });
+});
+
+app.get("/getteachers",(res)=>{
+    let sql="SELECT * FROM ogretmen";
+    let query=db.query(sql,(err,result)=>{
+        if(err) throw err;
+        console.log(result);
+        res.send(result);
+    });
+});
+
 
 
 app.listen("3000", () => {

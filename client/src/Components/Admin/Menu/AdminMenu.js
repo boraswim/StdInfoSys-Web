@@ -8,20 +8,14 @@ function AdminMenu() {
     
 <ul class="nav flex-row">
   <li style={{display: 'inline-block'}} class="nav-item">
-    <Link to="dersalma" class="nav-link active mt-2" href="#">Öğrenci Ders Alma Talebi</Link>
+    <Link to="OgrenciEdit" class="nav-link active mt-2" href="#">Öğrenci Ekle/Düzenle</Link>
   </li>
   <li style={{display: 'inline-block'}} class="nav-item">
-    <Link to="bolumders" class="nav-link active mt-2" href="#">Öğrenci Bölüm Dersleri</Link>
+    <Link to="OgretmenEdit" class="nav-link active mt-2" href="#">Öğretmen Ekle/Düzenle</Link>
   </li>
   <li style={{display: 'inline-block'}} class="nav-item">
-    <Link to="not" class="nav-link active mt-2" href="#">Öğrenci Not Bilgileri</Link>
+    <Link to="DersEdit" class="nav-link active mt-2" href="#">Bölüm Dersi Ekle/Düzenle</Link>
   </li>
-  <li style={{display: 'inline-block'}} class="nav-item">
-    <Link to="profil" class="nav-link active mt-2" href="#">Admin Profili</Link>
-  </li>
-
-
-
 </ul> 
 
 
