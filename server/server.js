@@ -92,14 +92,32 @@ app.get("/getstudents",(req, res)=>{
     });
 });
 
-app.get("/deletestudent/:id",(req,res)=>{
-    let sql=`DELETE FROM login WHERE id=${req.params.id}`;
+app.get("/deletestudent/:number",(req,res)=>{
+    let sql=`DELETE FROM login WHERE number=${req.params.number}`;
     let query=db.query(sql,(err,result)=>{
         if(err) throw err;
         console.log(result);
         res.send("Post deleted");
     });
 });
+
+app.post('/addstudent', (req, res) => {
+    const sql = "INSERT INTO login (`number`,`name`,`year`,`email`,`password`) VALUES (?)";
+    const values = [
+        req.body.number,
+        req.body.name,
+        req.body.year,
+        req.body.email,
+        req.body.password,
+    ]
+    db.query(sql, [values], (err, data) => {
+        if(err) {
+            return res.json("Error");
+        }
+        console.log(data);
+        return res.json(data);
+    })
+})
 
 app.get("/getclasses",(req, res)=>{
     let sql="SELECT * FROM ders";
@@ -110,8 +128,8 @@ app.get("/getclasses",(req, res)=>{
     });
 });
 
-app.get("/deleteclass/:id",(req,res)=>{
-    let sql=`DELETE FROM ders WHERE id=${req.params.id}`;
+app.get("/deleteclass/:code",(req,res)=>{
+    let sql=`DELETE FROM ders WHERE code=${req.params.code}`;
     let query=db.query(sql,(err,result)=>{
         if(err) throw err;
         console.log(result);
@@ -120,11 +138,13 @@ app.get("/deleteclass/:id",(req,res)=>{
 });
 
 app.post('/addclass', (req, res) => {
-    const sql = "INSERT INTO ders (`name`,`email`,`password`) VALUES (?)";
+    const sql = "INSERT INTO ders (`code`,`name`,`status`,`term`,`credit`) VALUES (?)";
     const values = [
+        req.body.code,
         req.body.name,
-        req.body.email,
-        req.body.password,
+        req.body.status,
+        req.body.term,
+        req.body.credit
     ]
     db.query(sql, [values], (err, data) => {
         if(err) {
@@ -144,8 +164,8 @@ app.get("/getteachers",(req, res)=>{
     });
 });
 
-app.get("/deleteteacher/:id",(req,res)=>{
-    let sql=`DELETE FROM ogretmen WHERE id=${req.params.id}`;
+app.get("/deleteteacher/:number",(req,res)=>{
+    let sql=`DELETE FROM ogretmen WHERE number=${req.params.number}`;
     let query=db.query(sql,(err,result)=>{
         if(err) throw err;
         console.log(result);
@@ -154,9 +174,11 @@ app.get("/deleteteacher/:id",(req,res)=>{
 });
 
 app.post('/addteacher', (req, res) => {
-    const sql = "INSERT INTO ogretmen (`name`,`email`,`password`) VALUES (?)";
+    const sql = "INSERT INTO ogretmen (`number`,`name`,`class`,`email`,`password`) VALUES (?)";
     const values = [
+        req.body.number,
         req.body.name,
+        req.body.class,
         req.body.email,
         req.body.password,
     ]
@@ -168,6 +190,49 @@ app.post('/addteacher', (req, res) => {
         return res.json(data);
     })
 })
+
+app.post('/addrequest', (req, res) => {
+    const sql = "INSERT INTO talep (`stdnum`,`classcode`) VALUES (?)";
+    const values = [
+        req.body.stdnum,
+        req.body.classcode,
+    ]
+    db.query(sql, [values], (err, data) => {
+        if(err) {
+            return res.json("Error");
+        }
+        console.log(data);
+        return res.json(data);
+    })
+})
+
+app.get("/getrequests",(req, res)=>{
+    let sql="SELECT * FROM talep";
+    let query=db.query(sql,(err,result)=>{
+        if(err) throw err;
+        console.log(result);
+        res.send(result);
+    });
+});
+
+app.get("/getcurrentrequest/:stdnum",(req, res)=>{
+    let sql=`SELECT * FROM talep WHERE stdnum=${req.params.stdnum}`;
+    let query=db.query(sql,(err,result)=>{
+        if(err) throw err;
+        console.log(result);
+        res.send(result);
+    });
+});
+
+app.get("/approverequest/:id",(req,res)=>{
+    let newTitle="APPROVED";
+    let sql=`UPDATE talep SET status= '${newTitle}' WHERE id=${req.params.id}`;
+    let query=db.query(sql,(err,result)=>{
+        if(err) throw err;
+        console.log(result);
+        res.send("post updated");
+    });
+});
 
 
 

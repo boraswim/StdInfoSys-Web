@@ -10,9 +10,11 @@ function DersEdit()
     }, []);
 
     const [values, setValues] = useState({
+      code: '',
       name: '',
-      email: '',
-      password: ''
+      status: '',
+      term: '',
+      credit: ''
   })
 
   const handleInput = (event) => {
@@ -27,9 +29,9 @@ function DersEdit()
 
     function deleteClass()
     {
-      const idInput = document.getElementById("deleteId").value;
-      console.log(idInput);
-      axios.get(`http://localhost:3000/deleteclass/${idInput}`);
+      const codeInput = document.getElementById("deleteCode").value;
+      console.log(codeInput);
+      axios.get(`http://localhost:3000/deleteclass/${codeInput}`);
       window.location.reload();
     }
 
@@ -51,42 +53,54 @@ function DersEdit()
           <table>
             <thead>
             <tr>
-              <th>ID</th>
+              <th>Code</th>
               <th>Name</th>
-              <th>Mail</th>
-              <th>Password</th>
+              <th>Status</th>
+              <th>Term</th>
+              <th>Credit</th>
             </tr>
             </thead>
             <tbody>
               {
                 data?.map((_class, index) => {
                   return<tr key={index}>
-                    <td>{_class.id}</td>
+                    <td>{"BIMU" + _class.code}</td>
                     <td>{_class.name}</td>
-                    <td>{_class.email}</td>
-                    <td>{_class.password}</td>
+                    <td>{_class.status}</td>
+                    <td>{_class.term}</td>
+                    <td>{_class.credit}</td>
                   </tr>
                   })
               }
             </tbody>
           </table>
-          <input placeholder="Enter ID to delete" name="id" id="deleteId"></input>
+          <input placeholder="Enter code to delete" id="deleteCode"></input>
           <button onClick={deleteClass}>DELETE</button>
 
           <form action='' onSubmit={addClass}>
+                <div className='mb-3'>
+                    <label htmlFor='code'><strong>Code</strong></label>
+                    <input type='text' placeholder='Enter Code' name='code'
+                    onChange={handleInput}  className='form-control rounded-0'/>
+                </div>
                 <div className='mb-3'>
                     <label htmlFor='name'><strong>Name</strong></label>
                     <input type='text' placeholder='Enter Name' name='name'
                     onChange={handleInput}  className='form-control rounded-0'/>
                 </div>
                 <div className='mb-3'>
-                    <label htmlFor='email'><strong>Email</strong></label>
-                    <input type='email' placeholder='Enter Email' name='email'
+                    <label htmlFor='status'><strong>Status</strong></label>
+                    <input type='text' placeholder='Enter Status' name='status'
                     onChange={handleInput}  className='form-control rounded-0'/>
                 </div>
                 <div className='mb-3'>
-                    <label htmlFor='password'><strong>Password</strong></label>
-                    <input type='password' placeholder='Enter Password' name='password'
+                    <label htmlFor='term'><strong>Term</strong></label>
+                    <input type='text' placeholder='Enter Term' name='term'
+                    onChange={handleInput}  className='form-control rounded-0'/>
+                </div>
+                <div className='mb-3'>
+                    <label htmlFor='credit'><strong>Credit</strong></label>
+                    <input type='text' placeholder='Enter Credit' name='credit'
                     onChange={handleInput}  className='form-control rounded-0'/>
                 </div>
                 <button type='submit' className='btn btn-success w-100 rounded-0'><strong>Add Class</strong></button>

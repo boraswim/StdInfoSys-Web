@@ -16,6 +16,7 @@ import AdminHome from './Components/Admin/Home/AdminHome'
 import OgretmenEdit from './Components/Admin/OgretmenEdit/OgretmenEdit'
 import OgrenciEdit from './Components/Admin/OgrenciEdit/OgrenciEdit'
 import DersEdit from './Components/Admin/DersEdit/DersEdit'
+import DersOnay from './Components/Ogretmen/DersOnay/DersOnay'
 
 
 function App() {
@@ -39,7 +40,9 @@ function App() {
             <Route path='dersEdit' element={<DersEdit/>}></Route>
         </Route>
         <Route path='/ogretmenLogin' element={<OgretmenLogin />}></Route>
-        <Route path='/ogretmenHome' element={<OgretmenHome />}></Route>
+        <Route path='/ogretmenHome' element={<OgretmenHome />}>
+            <Route path='dersonay' element={<DersOnay />}></Route>
+        </Route>
         <Route path='/' element={<Login />}></Route>
         <Route path='/register' element={<Register />}></Route>
         <Route path='/home' element={<Home />}>

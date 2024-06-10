@@ -8,7 +8,7 @@ function OgetmenMenu() {
     
 <ul class="nav flex-row">
   <li style={{display: 'inline-block'}} class="nav-item">
-    <Link to="dersalma" class="nav-link active mt-2" href="#">Öğrenci Ders Alma Talebi</Link>
+    <Link to="dersonay" class="nav-link active mt-2" href="#">Öğrenci Ders Alma Onayı</Link>
   </li>
   <li style={{display: 'inline-block'}} class="nav-item">
     <Link to="bolumders" class="nav-link active mt-2" href="#">Öğrenci Bölüm Dersleri</Link>

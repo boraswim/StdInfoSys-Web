@@ -37,7 +37,7 @@ function OgretmenLogin() {
             .then(res => {
                 console.log(res)
                 if(res.data === "Success") {
-                    navigate('/ogretmenHome')
+                    navigate('/ogretmenHome');
                 }
                 else{
                     alert("No record exists")

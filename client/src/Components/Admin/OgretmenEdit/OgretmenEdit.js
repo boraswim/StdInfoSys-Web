@@ -10,7 +10,9 @@ function OgretmenEdit()
     }, []);
 
     const [values, setValues] = useState({
+      number: '',
       name: '',
+      class: '',
       email: '',
       password: ''
   })
@@ -27,9 +29,9 @@ function OgretmenEdit()
 
     function deleteTeacher()
     {
-      const idInput = document.getElementById("deleteId").value;
-      console.log(idInput);
-      axios.get(`http://localhost:3000/deleteteacher/${idInput}`);
+      const numberInput = document.getElementById("deleteNumber").value;
+      console.log(numberInput);
+      axios.get(`http://localhost:3000/deleteteacher/${numberInput}`);
       window.location.reload();
     }
 
@@ -51,8 +53,9 @@ function OgretmenEdit()
           <table>
             <thead>
             <tr>
-              <th>ID</th>
+              <th>Number</th>
               <th>Name</th>
+              <th>Class</th>
               <th>Mail</th>
               <th>Password</th>
             </tr>
@@ -61,8 +64,9 @@ function OgretmenEdit()
               {
                 data?.map((teacher, index) => {
                   return<tr key={index}>
-                    <td>{teacher.id}</td>
+                    <td>{teacher.number}</td>
                     <td>{teacher.name}</td>
+                    <td>{teacher.class}</td>
                     <td>{teacher.email}</td>
                     <td>{teacher.password}</td>
                   </tr>
@@ -70,13 +74,23 @@ function OgretmenEdit()
               }
             </tbody>
           </table>
-          <input placeholder="Enter ID to delete" name="id" id="deleteId"></input>
+          <input placeholder="Enter number to delete" name="number" id="deleteNumber"></input>
           <button onClick={deleteTeacher}>DELETE</button>
 
           <form action='' onSubmit={addTeacher}>
+          <div className='mb-3'>
+                    <label htmlFor='number'><strong>Number</strong></label>
+                    <input type='text' placeholder='Enter Number' name='number'
+                    onChange={handleInput}  className='form-control rounded-0'/>
+                </div>
                 <div className='mb-3'>
                     <label htmlFor='name'><strong>Name</strong></label>
                     <input type='text' placeholder='Enter Name' name='name'
+                    onChange={handleInput}  className='form-control rounded-0'/>
+                </div>
+                <div className='mb-3'>
+                    <label htmlFor='class'><strong>Class</strong></label>
+                    <input type='text' placeholder='Enter Class' name='class'
                     onChange={handleInput}  className='form-control rounded-0'/>
                 </div>
                 <div className='mb-3'>

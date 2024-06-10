@@ -10,7 +10,9 @@ function OgrenciEdit()
     }, []);
 
     const [values, setValues] = useState({
+      number: '',
       name: '',
+      year: '',
       email: '',
       password: ''
   })
@@ -27,16 +29,16 @@ function OgrenciEdit()
 
     function deleteStudent()
     {
-      const idInput = document.getElementById("deleteId").value;
-      console.log(idInput);
-      axios.get(`http://localhost:3000/deletestudent/${idInput}`);
+      const numberInput = document.getElementById("deleteNumber").value;
+      console.log(numberInput);
+      axios.get(`http://localhost:3000/deletestudent/${numberInput}`);
       window.location.reload();
     }
 
     const addStudent = (event) => {
       event.preventDefault();
       
-          axios.post('http://localhost:3000/register', values)
+          axios.post('http://localhost:3000/addstudent', values)
           .then(res => {
               console.log(res)
               window.location.reload();
@@ -50,8 +52,9 @@ function OgrenciEdit()
           <table>
             <thead>
             <tr>
-              <th>ID</th>
+              <th>Number</th>
               <th>Name</th>
+              <th>Year</th>
               <th>Mail</th>
               <th>Password</th>
             </tr>
@@ -60,8 +63,9 @@ function OgrenciEdit()
               {
                 data?.map((student, index) => {
                   return<tr key={index}>
-                    <td>{student.id}</td>
+                    <td>{student.number}</td>
                     <td>{student.name}</td>
+                    <td>{student.year}</td>
                     <td>{student.email}</td>
                     <td>{student.password}</td>
                   </tr>
@@ -69,13 +73,23 @@ function OgrenciEdit()
               }
             </tbody>
           </table>
-          <input placeholder="Enter ID to delete" name="id" id="deleteId"></input>
+          <input placeholder="Enter number to delete" name="number" id="deleteNumber"></input>
           <button onClick={deleteStudent}>DELETE</button>
 
           <form action='' onSubmit={addStudent}>
                 <div className='mb-3'>
+                    <label htmlFor='number'><strong>Number</strong></label>
+                    <input type='text' placeholder='Enter Number' name='number'
+                    onChange={handleInput}  className='form-control rounded-0'/>
+                </div>
+                <div className='mb-3'>
                     <label htmlFor='name'><strong>Name</strong></label>
                     <input type='text' placeholder='Enter Name' name='name'
+                    onChange={handleInput}  className='form-control rounded-0'/>
+                </div>
+                <div className='mb-3'>
+                    <label htmlFor='year'><strong>Year</strong></label>
+                    <input type='text' placeholder='Enter Year' name='year'
                     onChange={handleInput}  className='form-control rounded-0'/>
                 </div>
                 <div className='mb-3'>
