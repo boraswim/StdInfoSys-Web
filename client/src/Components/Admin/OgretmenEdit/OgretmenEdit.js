@@ -49,7 +49,7 @@ function OgretmenEdit()
 
   return (
       <div>
-          <h1>Teacher List</h1>
+          <h4 style={{color:"#007bff", textAlign:"center"}}>Öğretmen Listesi</h4>
           <table>
             <thead>
             <tr>

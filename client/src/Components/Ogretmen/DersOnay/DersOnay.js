@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import axios from 'axios'
+import "../DersOnay/DersOnay.css"
 
 function DersOnay()
 {
@@ -24,14 +25,14 @@ function DersOnay()
       }
     return (
         <div>
-          <h1>Request List</h1>
+          <h4 style={{color:"#007bff", textAlign:"center"}}>Öğrenci Ders Talep Listesi</h4>
           <table>
             <thead>
             <tr>
               <th>ID</th>
-              <th>Student Number</th>
-              <th>Class Code</th>
-              <th>Status</th>
+              <th>Öğrenci Numarası</th>
+              <th>Sınıf Numarası</th>
+              <th>Onay Durumu</th>
             </tr>
             </thead>
             <tbody>
@@ -47,8 +48,8 @@ function DersOnay()
               }
             </tbody>
           </table>
-          <input placeholder="Enter ID to approve" id="approveID"></input>
-          <button onClick={approveRequest}>APPROVE</button>
+          <input placeholder="Onay için ID gir" id="approveID"></input>
+          <button onClick={approveRequest}>Onayla</button>
         </div>
     );
 };

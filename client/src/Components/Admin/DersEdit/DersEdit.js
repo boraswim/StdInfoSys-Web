@@ -49,7 +49,7 @@ function DersEdit()
 
   return (
       <div>
-          <h1>Class List</h1>
+          <h4 style={{color:"#007bff", textAlign:"center"}}>Bölüm Ders Listesi</h4>
           <table>
             <thead>
             <tr>

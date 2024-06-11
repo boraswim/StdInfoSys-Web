@@ -1,7 +1,7 @@
 import React, { useEffect, useState  } from 'react';
 import axios from 'axios';
 
-function DersAlma(){
+function TalepDersleri(){
   const [data, setData] = useState([]);
   useEffect(() => 
     {
@@ -54,47 +54,32 @@ function DersAlma(){
   return (
     
    <div>
-          <h4 style={{color:"#007bff", textAlign:"center"}}>Dersler Listesi</h4>
+          
+          <h4 style={{color:"#007bff", textAlign:"center"}}>Öğrenci Talep Edilen Dersler</h4>
           <table>
             <thead>
             <tr>
-              <th>Code</th>
-              <th>Name</th>
+              <th>ID</th>
+              <th>Student Number</th>
+              <th>Class Code</th>
               <th>Status</th>
-              <th>Term</th>
-              <th>Credit</th>
             </tr>
             </thead>
             <tbody>
               {
-                data?.map((_class, index) => {
+                _data?.map((_request, index) => {
                   return<tr key={index}>
-                    <td>{"BIMU" + _class.code}</td>
-                    <td>{_class.name}</td>
-                    <td>{_class.status}</td>
-                    <td>{_class.term}</td>
-                    <td>{_class.credit}</td>
+                    <td>{_request.id}</td>
+                    <td>{_request.stdnum}</td>
+                    <td>{"BIMU" + _request.classcode}</td>
+                    <td>{_request.status}</td>
                   </tr>
                   })
               }
             </tbody>
           </table>
-          <form action='' onSubmit={addRequest}>
-                <div className='mb-3'>
-                    <label htmlFor='stdnum'><strong>Student Number</strong></label>
-                    <input type='text' placeholder='Enter Student Number' name='stdnum'
-                    onChange={handleInput}  className='form-control rounded-0'/>
-                </div>
-                <div className='mb-3'>
-                    <label htmlFor='classcode'><strong>Class Code</strong></label>
-                    <input type='text' placeholder='Enter Class Code' name='classcode'
-                    onChange={handleInput}  className='form-control rounded-0'/>
-                </div>
-                <button type='submit' className='btn btn-success w-100 rounded-0'><strong>Add Request</strong></button>
-            </form>
-          
    </div>
   );
 };
 
-export default DersAlma;
+export default TalepDersleri;

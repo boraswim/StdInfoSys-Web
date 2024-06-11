@@ -17,6 +17,7 @@ import OgretmenEdit from './Components/Admin/OgretmenEdit/OgretmenEdit'
 import OgrenciEdit from './Components/Admin/OgrenciEdit/OgrenciEdit'
 import DersEdit from './Components/Admin/DersEdit/DersEdit'
 import DersOnay from './Components/Ogretmen/DersOnay/DersOnay'
+import TalepDersleri from './Components/Ogrenci/TalepDersleri/TalepDersleri'
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
         <Route path='/home' element={<Home />}>
             <Route path='dersalma' element={<DersAlma/>}></Route>
             <Route path='bolumders' element={<BolumDers/>}></Route>
+            <Route path='talepdersleri' element={<TalepDersleri/>}></Route>
             <Route path='not' element={<Not/>}></Route>
             <Route path='profil' element={<Profil/>}></Route>
         </Route>

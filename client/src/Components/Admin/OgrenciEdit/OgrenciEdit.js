@@ -48,7 +48,7 @@ function OgrenciEdit()
 
   return (
       <div>
-          <h1>Student List</h1>
+          <h4 style={{color:"#007bff", textAlign:"center"}}>Öğrenci Listesi</h4>
           <table>
             <thead>
             <tr>

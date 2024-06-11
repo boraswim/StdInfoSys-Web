@@ -2,7 +2,7 @@ import React from 'react'
 import {Link,Outlet} from 'react-router-dom'
 function AdminMenu() {
   return (
-    <div style={{backgroundColor: '#cfe2ff', width: '100%', height: '100vh'}}>
+    <div style={{backgroundColor: '#cfe2ff', width: '100%', height: '170vh'}}>
 
 
     

@@ -12,6 +12,7 @@ const db = mysql.createConnection({
     user: "root",
     password: "",
     database:"signup",
+    port:"3307"
 })  
 
 app.post('/register', (req, res) => {
